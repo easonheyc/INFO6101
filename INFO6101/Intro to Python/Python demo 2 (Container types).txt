@@ -1,0 +1,115 @@
+Lists, the python King container type :-)
+a = [1,2,3]
+b = [4.5.6]
+List_of_lists = [a, b, []]
+s = sum(a)
+one = a[0]
+three = a[-1]  #last element
+two = a[-2]  #next-to-last element
+digits = range(10)
+first_three = digits[:3]
+minus_first_three = digits[3:]
+one_to_four = digits[1:5]
+copy_of_digits = digits[:]
+x.extend([10,11,12])
+x.append(13)
+x, y = [1,2]
+
+x = [4,1,2,3]
+y = sorted(x)  #x remains unchanged
+x.sort()  #x is sorted in place
+
+zip transforms multiple lists into a single list of tuples of corresponding elements
+list1 = [‘a’, ‘b’, ‘c’]
+list2 = [1, 2, 3]
+zipper = zip(list1, list2)  #[(‘a’, 1), (‘b’, 2), (‘c’, 3)]
+Orig_letters, orig_numbers = zip(*zipper)  # * performs argument unpacking
+def add(a, b): return a + b
+add(1, 2)   #3
+add([1,2])  #TypeError!add(*[1,2]) #3
+
+
+===========================================
+Tuples: Lists’ immutable cousins
+mylist = [1, 2,3]
+mytuple = (1,2,3)
+Tuples are a convenient way to return multiple values from functions:
+def sum_product(x, y):
+  return (x + y), (x * y)
+s, p = sum_product(10, 10)
+Multiple assignments:
+x, y = 1, 2
+Python sexy variable swap:
+x, y = y, x
+
+===========================================
+Dictionary: Lists of key/value pairs, or named arrays
+empty = {}
+also_empty = dict()
+grades = {“dino”: 3.9, “elon”: 4.0}
+elon_grade = grades[“elon”]
+elon_grade = grades.get(“elon”, 0)
+dinograde_p = “dino” in grades
+json = {
+	“title”: “my blog”,
+	“hashtags”: [“#bigdata”, “#crypto”, “#quantum”]
+}
+json.keys()
+json.values()
+json.items() 
+Dictionary keys are immutable
+
+===========================================
+From collections import defaultdict
+word_counts = defaultdict(int)
+for word in document:
+  word_counts[word] += 1
+
+dd = defaultdict(dict)
+dd[“dino”][“City”] = “Boston” 	#{“dino”: {“City”: “Boston”}}
+
+
+===========================================
+Counter
+From collections import Counter
+word_count = Counter([“to”, “be”, “or”, “not”,\ “to”, “be”])
+
+
+===========================================
+Sets: Unordered collection of distinct elements
+s = set()
+s.add(1)
+s.add(2)
+s.add(2)
+p = 2 in s
+
+Performance:
+stopwords_list = ["a", "the", "it"]
+p = "hello" in stopwords  #slow
+stopwords_set = set(stopwords_list)
+p = "hello" in stopw-rds_set  #fast
+
+Distinct:
+word_list = ['the', 'cat', 'jumps', …]
+distinct_word_list = set(world_list)
+
+===========================================
+List comprehensions: Transformations of lists (very important for Data Science!)
+
+even_numbers = [x for x in range(100) if x % 2 == 0 ]
+even_set = {x for x in range(100) if x % 2 == 0 }
+zeroes = [ 0 for _ in range(100)]
+pairs = [ (x,y) 
+	          for x in range(100) 
+	          for y in range(100) ]  #10,000 pairs
+some_tuples = [(1,2,3), (4,5,6), (7,8,9)]
+flattened = [x for tup in some_tuples for x in tup]
+flattened  #[1,2,3,4,5,6,7,8,9]
+
+List comprehensions is the pythonic equivalent of LINQ in .NET
+We’ll use list comprehensions a lot in data science because they represent anamorphisms (unfolds or maps) and catamorphisms (projections) of data structures
+
+
+
+
+

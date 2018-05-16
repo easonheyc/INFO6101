@@ -1,0 +1,39 @@
+path = ‘myfolder/mybigdata.txt’ # replace with real file in real folder
+f = open(path)
+for line in f:
+  print(line)
+#EOL marker intact!
+
+Lines = [x.rstrip() for x in open(path)]
+#EOL-free :-)
+
+Analog to 'Using" in C# is 'with':
+with open(path) as f:
+  lines = [x.rstrip() for x in f]
+#automatically closes the file when exiting the 'with' block!
+
+with open(path, ‘rb’) as f:
+  data.decode(‘utf8’)
+
+==============================================
+OO Python
+
+class Set2:
+  def __init__(self, values=None):
+    """ctor"""
+    self.dict = {} #each instance has its own
+                   #dict which is what we use
+                   #to track membership
+    if values is not None:
+      for value in values:
+        self.add(value)
+
+  def add(self, value):
+    self.dict[value] = True
+
+  def contains(self, value):
+    return value in self.dict
+
+  def remove(self, value):
+    del self.dict[value]	
+

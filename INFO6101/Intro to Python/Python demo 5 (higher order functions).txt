@@ -1,0 +1,43 @@
+Let’s say we want to create a higher-order function that takes as input some function f and returns a new function that for any input returns twice the value of f
+
+def doubler(f):
+  def g(x):
+    return 2 * f(x)
+  return g
+
+Works in most cases:
+
+def f_plus_1(x):
+  return x + 1;
+g = doubler(f_plus_1)
+print(g(3))  # 8 = (3 + 1) * 2
+
+But uh-oh..:
+
+def sum(x, y)::
+  return x + y;
+g = doubler(sum)
+print(g(1,2)) #TypeError!
+
+What we need is a way to specify a function that takes arbitrary arguments:
+
+def magic(*args, **kwargs):
+  print (“unnamed args: “, args)
+  print (“keyword args: “, kwargs)
+magic(1,2, key1 = “NU”, key2 = ’rocks!”)
+
+args is a tuple of its unnamed arguments and kwargs is a dictionary of its named arguments. So now we can:
+
+def doublerr(f):
+  """works no matter the inputs"""
+  def g(*args, **kwargs):
+    """pass all arguments to f"""
+    return 2 * f(*args, **kwargs)
+  return g
+
+And now:
+
+g = doublerr(sum)
+print(g(1, 2))  # 6:
+
+

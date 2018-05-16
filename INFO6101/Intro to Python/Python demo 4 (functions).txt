@@ -1,0 +1,70 @@
+A function is a rule for taking zero or more inputs and doing a transformation into an output
+def double(x):
+	"""docstring: multiply by 2"""
+	return x * 2
+
+Python functions are first-class: assign them to variables and pass them as arguments
+def apply_to_one(f):
+	return f(1)
+
+Short anonymous functions are called lambdas
+y = apply_to_one(lambda x: x + 4)  #5
+
+another_double = lambda x: 2 * x #the same as..
+def another_double(x): return 2 * x
+
+def myprint(message=“hello world”):
+	print message
+myprint() #prints “hello world”
+myprint(“hello dino”)  #prints “hello dino”
+
+=============================================
+Generators, sometimes called coroutines, are sequences you can iterate over, but which are only produced lazily (as needed)
+
+You can create generators with functions and yield:
+def lazy_range(n):
+  """a lazy version of range()"""
+  i = 0
+  while i < n:
+    yield i
+    i += 1
+
+# to consume yielded values:
+for i in lazy_range(10)
+  print(i)
+
+You may also create generators by using list comprehensions wrapped in parenses (note: not brackets [], which are eager list comprehensions. "Eager" is the opposite of "lazy"):
+lazy_ints_under_100 = (i for i in range(100)) 
+
+============================================
+Iterators: Standard itertools library has a collection of generators for common data algorithms
+
+import itertools
+first_letter = lambda x: x[0]
+names = [ ‘Alex’, ‘Aria’, ‘Wally’, ‘Will’, ‘Ariana’, ‘Steve’]
+for letter, names in itertools.groupby(names, first_letter):
+  print(letter, list(names))
+ # A [‘Alex, ‘Aria’]
+   W [‘Wally’, ‘Will’]
+   A [‘Ariana’]
+   S [‘Steve’]
+
+================================================
+Enumerations:
+
+#nicely functional :-)
+for i, document in enumerate(documents):
+  do_something(i, document)
+
+#unpythonic!
+for i in range(len(documents)):
+  document = documents[i]  do_something(I, document)
+
+#also unpythonic!
+i = 0
+for document in documents:
+  do_something(i, document)
+  i += 1
+
+
+

@@ -1,0 +1,52 @@
+# Everything is a Python object
+a = ‘foo’
+a.<press TAB>
+
+# When assigning a variable in Python, you are creating a reference to the right hand side
+a = [1,2,3]
+b = a
+a.append(4)
+b
+
+# To create a copy, instantiate a list of an element
+a = [1,2,3]
+b = a
+c = list(a)
+a is b
+a is c
+a == c
+
+# Python is a strongly typed language
+a = 5
+type(a)
+a = ‘foo’
+type(a)
+
+‘5’ + 5
+VB: 10
+Javascript: ‘55’
+
+3/5
+
+a = 4
+isinstance(a, int)isinstance(a, {int, float))
+
+# Most objects in Python are mutable
+a = [1, 2, ‘foo’, 4]
+a[3] = ‘bar’
+a
+#.. except for tuples!
+a = (1, 2, ‘foo’, 4)
+a[3] = ‘bar’
+
+Use backslash to encode special characters (e.g. \t for TAB)
+len(“\t”)
+
+Use raw strings to represent backslashes (e.g. r”\t”)
+len(r”\t”)
+
+Use triple quotes for multiline strings
+Myaddress = """2400 Beacon St.
+Chestnut Hill
+MA 02467"""
+
